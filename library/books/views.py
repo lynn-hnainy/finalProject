@@ -15,6 +15,6 @@ def search_books(request):
     if(request.method=="POST"):
         searched=request.POST['searched']
         books=Book.objects.filter(book_title__contains=searched)| Book.objects.filter(author_name__contains=searched)|Book.objects.filter(publication_year__contains=searched)
-        return render(request,'search_books.html',{'searched':searched,'books':books})
+        return render(request,'search_books.html',{'searched':searched,'books':books,'cats':cats})
     else:
-         return render(request,'search_books.html',{})
+         return render(request,'search_books.html',{'cats':cats})

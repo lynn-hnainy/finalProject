@@ -1,5 +1,8 @@
 from pyexpat import model
+import this
 from django.db import models
+
+import books
 
 # Create your models here.
 class Language(models.Model):
@@ -23,7 +26,7 @@ class Book(models.Model):
     publication_year=models.IntegerField('publication_year')
     lang_id=models.ForeignKey(Language,on_delete=models.CASCADE)
     cat_id=models.ForeignKey(Category,on_delete=models.CASCADE)
-    img_id=models.IntegerField('img_id')
+    book_img=models.ImageField(null=True,blank=True,upload_to="assets/")
 
     def __str__(self):
         return self.book_title+'-'+self.author_name

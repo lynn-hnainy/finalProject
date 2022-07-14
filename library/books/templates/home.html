@@ -6,7 +6,10 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">{{book.book_title}}</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-text"> {% if book.book_img %}
+            <img src="{{book.book_img}}" alt="{{book.book_title}}">
+            {% endif %}
+          </p>
           {% if book.number_of_copies > 0 %}
           <a href="#" class="btn btn-primary">Rent</a>
           {% else %}
