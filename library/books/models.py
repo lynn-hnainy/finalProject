@@ -1,7 +1,6 @@
 from pyexpat import model
 import this
 from django.db import models
-
 import books
 
 # Create your models here.

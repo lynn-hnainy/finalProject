@@ -13,7 +13,7 @@ def signin(request):
         user = User.objects.get(username=username)
         if user is not None:
             if user.check_password(password):
-                return render(request,'members/home.html')
+                return redirect('home')
             else:
                  messages.error(request, 'Username and Password incorrect!')
                  return redirect('login')
