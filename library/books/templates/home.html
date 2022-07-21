@@ -1,23 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row m-5">
-    {% for book in books %}
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{book.book_title}}</h5>
-          <p class="card-text"> {% if book.book_img %}
-            <img src="{{book.book_img}}" alt="{{book.book_title}}">
-            {% endif %}
-          </p>
-          {% if book.number_of_copies > 0 %}
-          <a href="#" class="btn btn-primary">Rent</a>
-          {% else %}
-          <a href="#" class="btn btn-primary">Reserve</a>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-    {% endfor %}
+{% for book in books %}
+<div class="card" style="width: 18rem;">
+  {% if book.book_img %}
+  <img class="card-img-top" src="../{{book.book_img}}" alt="{{book.book_title}}">
+  {% endif %}
+  <div class="card-body">
+    <h5 class="card-title">{{book.book_title}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{book.author_name}}</h6>
+    <p class="card-text">{{book.description}}</p>
+    {% if book.number_of_copies > 0 %}
+      <a href="#" class="btn btn-primary">Rent</a>
+    {% else %}
+      <a href="#" class="btn btn-primary">Reserve</a>
+    {% endif %}
+  </div>
 </div>
+{% endfor %}
 {% endblock %}
