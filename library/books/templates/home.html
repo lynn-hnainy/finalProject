@@ -10,7 +10,7 @@
     <h6 class="card-subtitle mb-2 text-muted">{{book.author_name}}</h6>
     <p class="card-text">{{book.description}}</p>
     {% if book.number_of_copies > 0 %}
-      <a href="#" class="btn btn-primary">Rent</a>
+      <a href="{% url 'borrow_book' book.id user.id %}" class="btn btn-primary">Rent</a>
     {% else %}
       <a href="#" class="btn btn-primary">Reserve</a>
     {% endif %}

@@ -20,7 +20,7 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from members import views as member_views
 from books import views as book_views
-
+from booksTransaction import views as booksTrans_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', member_views.signin, name='login'),
@@ -28,4 +28,5 @@ urlpatterns = [
     path('home/',book_views.home,name="home"),
     path('list_books/<cat_id>',book_views.list_books,name="list_books"),
     path('search/',book_views.search_books,name="search_books"),
+    path('borrow/<book_id>/<user_id>',booksTrans_view.borrow_book,name="borrow_book"),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
