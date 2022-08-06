@@ -15,4 +15,9 @@ def borrow_book(request,book_id,user_id):
         book.save()
         member=User.objects.get(id=user_id)
         borrow=Borrowing.objects.create(book=book,user=member)
-        return render(request,"borrowed.html")
+        return render(request,"borrowed_successfully.html")
+
+def borrowed_books(request,user_id):
+    member=User.objects.get(id=user_id)
+    borrowed_books=Borrowing.objects.filter(user=member)
+    return render(request,"borrowed.html",{'books':borrowed_books})
