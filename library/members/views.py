@@ -1,30 +1,27 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserForm, MemberForm
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
 # Create your views here.
 def signin(request):
     if request.method == 'POST':
-
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        user = User.objects.get(username=username)
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
         if user is not None:
-            if user.check_password(password):
-                return redirect('home')
-            else:
-                 messages.error(request, 'Username and Password incorrect!')
-                 return redirect('login')
-
+            login(request, user)
+            return redirect('home')
         else:
-              messages.error(request, 'Username and Password incorrect!')
-              return redirect('login')
-
+           messages.success(request,"Log in failed")
+           return redirect("login")
     else:
-        return render(request,'members/login.html')
+         return render(request,'members/login.html')
 
+def logout_member(request):
+    logout(request)
+    messages.success(request,"You were logged out")
+    return redirect("login")
 
 def register(request):
     if request.method == 'POST':

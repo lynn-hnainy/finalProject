@@ -23,8 +23,9 @@ from books import views as book_views
 from booksTransaction import views as booksTrans_view
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', member_views.signin, name='login'),
     path('register/', member_views.register, name='register'),
+    path('', member_views.signin, name='login'),
+    path('logout_member',member_views.logout_member,name="logout_member"),
     path('home/',book_views.home,name="home"),
     path('list_books/<cat_id>',book_views.list_books,name="list_books"),
     path('search/',book_views.search_books,name="search_books"),
