@@ -30,4 +30,5 @@ urlpatterns = [
     path('search/',book_views.search_books,name="search_books"),
     path('borrow/<book_id>/<user_id>',booksTrans_view.borrow_book,name="borrow_book"),
     path('borrowed_books/<user_id>',booksTrans_view.borrowed_books,name="borrowed_books"),
+    path('renew_borrowing/<book_id>/<user_id>',booksTrans_view.renew_borrowing,name="renew_borrowing"),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -12,9 +12,12 @@ class Borrowing(models.Model):
     borrow_date=models.DateField(default=datetime.datetime.now())
     return_date=models.DateField(blank=True, null=True)
     renew_borrowing=models.BooleanField(default=False)
+    fines=models.IntegerField(default=0)
     def clean(self):
         if not self.return_date:
             self.return_date = self.borrow_date + timedelta(days=10)
+        if not self.fines:
+            self.fines = ((datetime.datetime.now().date()-self.return_date).days)*5
 
 
     def save(self, **kwargs):
@@ -24,6 +27,7 @@ class Borrowing(models.Model):
 
     def __str__(self):
         return self.user.username+' '+self.book.book_title
+
 
 class Reservation(models.Model):
     book=models.ForeignKey(Book,on_delete=models.CASCADE)
