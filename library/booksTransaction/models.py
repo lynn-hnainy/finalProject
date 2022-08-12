@@ -2,7 +2,7 @@ from pyexpat import model
 from django.db import models
 from books.models import Book
 from members.models import Member
-from datetime import timedelta
+from datetime import date, timedelta
 import datetime
 from django.contrib.auth.models import User
 # Create your models here.
@@ -17,7 +17,7 @@ class Borrowing(models.Model):
         if not self.return_date:
             self.return_date = self.borrow_date + timedelta(days=10)
         if not self.fines:
-            self.fines = ((datetime.datetime.now().date()-self.return_date).days)*5
+            self.fines = ((date.today()-self.return_date).days)*5
 
 
     def save(self, **kwargs):

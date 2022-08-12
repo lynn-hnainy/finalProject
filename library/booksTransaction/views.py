@@ -11,7 +11,8 @@ cats=Category.objects.all()
 def borrow_book(request,book_id,user_id):
     book=Book.objects.get(pk=book_id)
     member=User.objects.get(id=user_id)
-    if Borrowing.objects.filter(book=book) and Borrowing.objects.filter(user=member).exists():
+    borrow=Borrowing.objects.filter(book=book).filter(user=member)
+    if borrow:
         messages.error(request, 'Book already borrowed')
         return redirect('home')
     else:
