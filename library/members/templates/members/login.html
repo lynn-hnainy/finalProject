@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <link rel="icon" type="image/x-icon" href="{% static 'assets/logo.png' %}">
-  <title></title>
+  <title>Saida Public Library</title>
 </head>
 <body style=" background: rgb(219,226,226);">
   <div class='nav-brand'> 
@@ -52,7 +52,7 @@
                     </div>
                   </div>
                 </form>
-                <p>Don't have an account? <a href="#">Register Here </a></p>
+                <p>Don't have an account? <a href="{% url 'register' %}">Register Here </a></p>
             </div>
         </div>
     </div>
