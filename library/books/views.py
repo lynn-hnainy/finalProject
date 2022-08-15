@@ -2,12 +2,14 @@ from urllib import request
 from django.shortcuts import render,redirect
 from .models import Book, Category
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 cats=Category.objects.all()
+@login_required(login_url='login')
 def home(request):
     books=Book.objects.all()
     return render(request,'list_books.html',{'books':books,'cats':cats})
-
+@login_required(login_url='login')
 def list_books(request,cat_id):
     books=Book.objects.all().filter(cat_id=cat_id)
     if books:
@@ -15,7 +17,7 @@ def list_books(request,cat_id):
     else:
         messages.error(request, 'No books found!')
         return render(request,'list_books.html',{'cats':cats})
-
+@login_required(login_url='login')
 def search_books(request):
     if(request.method=="POST"):
         searched=request.POST['searched']
