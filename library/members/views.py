@@ -11,7 +11,10 @@ def signin(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')
+            if request.user.is_superuser:
+                return redirect('register')
+            else:
+                return redirect('home')
         else:
            messages.success(request,"Log in failed")
            return redirect("login")

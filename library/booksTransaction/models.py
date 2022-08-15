@@ -16,8 +16,7 @@ class Borrowing(models.Model):
     def clean(self):
         if not self.return_date:
             self.return_date = self.borrow_date + timedelta(days=10)
-        if not self.fines:
-            self.fines = ((date.today()-self.return_date).days)*5
+
 
 
     def save(self, **kwargs):
