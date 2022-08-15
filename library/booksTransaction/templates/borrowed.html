@@ -17,7 +17,7 @@
                 <td>{{book.borrow_date}}</td>
                 <td>{{book.return_date}}</td>
                 <td>
-                    {% if not book.renew_borrowing and book.fines == 0%}
+                    {% if not book.renew_borrowing %}
                         <a href="{% url 'renew_borrowing' book.book.id book.user.id %}"">Renew</a>
                     {% endif %}
                 </td>

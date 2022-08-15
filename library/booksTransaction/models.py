@@ -26,6 +26,9 @@ class Borrowing(models.Model):
     def __str__(self):
         return self.user.username+' '+self.book.book_title
 
+    @property
+    def fines(self):
+        return ((datetime.date.today()-self.return_date).days)*5
 
 class Reservation(models.Model):
     book=models.ForeignKey(Book,on_delete=models.CASCADE)
