@@ -1,4 +1,5 @@
 from pyexpat import model
+from zoneinfo import available_timezones
 from django.db import models
 from books.models import Book
 from members.models import Member
@@ -37,3 +38,8 @@ class Reservation(models.Model):
 
     def __str__(self):
         return self.user.username
+    @property
+    def availibility_date(self):
+        book=Borrowing.objects.filter(book=self.book)
+        availibility_date=book.order_by('return_date')[0]
+        return availibility_date.return_date

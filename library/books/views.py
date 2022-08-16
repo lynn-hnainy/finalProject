@@ -35,3 +35,14 @@ def search_books(request):
             return render(request,'list_books.html',{'cats':cats})
     else:
         return render(request,'list_books.html',{'cats':cats})
+
+@login_required(login_url='login')
+def book_detail(request,book_id):
+    book=Book.objects.get(pk=book_id)
+    return render(request,'book_detail.html',{'book':book,'cats':cats})
+
+@login_required(login_url='login')
+def books_author(request,author_name):
+    book=Book.objects.filter(author_name=author_name)
+    return render(request,'list_books.html',{'books':book,'cats':cats})
+    

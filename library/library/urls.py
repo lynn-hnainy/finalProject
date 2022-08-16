@@ -34,4 +34,6 @@ urlpatterns = [
     path('borrowed_books/<user_id>',booksTrans_view.borrowed_books,name="borrowed_books"),
     path('reserved_books/<user_id>',booksTrans_view.reserved_books,name="reserved_books"),
     path('renew_borrowing/<book_id>/<user_id>',booksTrans_view.renew_borrowing,name="renew_borrowing"),
+    path('book_detail/<book_id>', book_views.book_detail, name='book_detail'),
+    path('books/<author_name>', book_views.books_author, name='books_author'),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

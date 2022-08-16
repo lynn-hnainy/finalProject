@@ -4,28 +4,16 @@
     <thead>
       <tr>
         <th scope="col">Book</th>
-        <th scope="col">Borrowing Date</th>
-        <th scope="col">Return Date</th>
-        <th scope="col">Renew</th>
-        <th scope="col">Fines</th>
+        <th scope="col">Reserved on</th>
+        <th scope="col">Available starting</th>
       </tr>
     </thead>
     <tbody>
         {% for book in books %}
             <tr>
                 <th scope="row">{{book.book.book_title}}</th>
-                <td>{{book.borrow_date}}</td>
-                <td>{{book.return_date}}</td>
-                <td>
-                    {% if not book.renew_borrowing and book.fines == 0%}
-                        <a href="{% url 'renew_borrowing' book.book.id book.user.id %}"">Renew</a>
-                    {% endif %}
-                </td>
-                <td>
-                    {% if book.fines > 0 %}
-                        <p class="font-weight-bold text-danger">{{book.fines}}</p>
-                    {% endif %}
-                </td>
+                <td>{{book.reservation_date}}</td>
+                <td>{{book.availibility_date}}</td>
             </tr>
         {% endfor %}
     </tbody>

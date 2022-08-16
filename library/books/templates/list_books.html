@@ -7,8 +7,12 @@
       <img class="card-img-top" src="../{{book.book_img}}" alt="{{book.book_title}}" width="100%" height="100%">
       {% endif %}
       <div class="card-body">
-        <h5 class="card-title">{{book.book_title}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{book.author_name}}</h6>
+        <h5 class="card-title">
+          <a href="{% url 'book_detail' book.id %}"> {{book.book_title}}</a>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+          <a href="{% url 'books_author' book.author_name %}"  class="link-secondary">{{book.author_name}}</a>
+        </h6>
         {% if book.number_of_copies > 0 %}
           <a href="{% url 'borrow_book' book.id user.id %}" class="btn btn-primary">Rent</a>
         {% else %}
