@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserForm, MemberForm
@@ -16,7 +17,7 @@ def signin(request):
             else:
                 return redirect('home')
         else:
-           messages.success(request,"Log in failed")
+           messages.warning(request,"Log in failed")
            return redirect("login")
     else:
          return render(request,'members/login.html')

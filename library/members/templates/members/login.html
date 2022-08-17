@@ -25,17 +25,18 @@
             <div class="col-lg-7 pt-5 px-5">
                 <h1 class="font-weight-bold py-3">Saida Public Library</h1>
                 <h4>Sign into your account</h4>
+                {% if messages %}
+                  <div class="container-fluid ">
+                    {% for message in messages %}
+                      <div class="alert alert-{{message.tags}}">
+                        {{ message }}
+                      </div>
+                    {% endfor %}
+                  </div>
+                  {% endif %}
+                
                 <form method="POST">
                   {% csrf_token %}
-                <div class="container-fluid text-center">
-                  {% if messages %}
-                  {% for message in messages %}
-                  <div >
-                    {{ message }}
-                  </div>
-                  {% endfor %}
-                  {% endif %}
-               
                   <div class="form-row">
                     <div class="col-lg-7">
                         <input type="text" placeholder='example' class='form-control my-3 p-3' name="username" id="">

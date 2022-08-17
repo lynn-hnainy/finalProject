@@ -41,5 +41,6 @@ class Reservation(models.Model):
     @property
     def availibility_date(self):
         book=Borrowing.objects.filter(book=self.book)
-        availibility_date=book.order_by('return_date')[0]
-        return availibility_date.return_date
+        if book:
+            availibility_date=book.order_by('return_date')[0]
+            return availibility_date.return_date
