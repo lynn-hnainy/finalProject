@@ -1,6 +1,7 @@
 from urllib import request
 from django.shortcuts import render,redirect
 from .models import Book, Category
+from booksTransaction.models import Reservation
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 # Create your views here.

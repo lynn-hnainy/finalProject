@@ -6,6 +6,8 @@
         <th scope="col">Book</th>
         <th scope="col">Reserved on</th>
         <th scope="col">Available starting</th>
+        <th scope="col">Cancel Reservation</th>
+        <th scope="col">Ready</th>
       </tr>
     </thead>
     <tbody>
@@ -14,6 +16,12 @@
                 <th scope="row">{{book.book.book_title}}</th>
                 <td>{{book.reservation_date}}</td>
                 <td>{{book.availibility_date}}</td>
+                <td>
+                  <a href="{% url 'cancel_reservation' book.book.id book.user.id %}">Cancel</a>
+                </td>
+                <td>
+                  <a href="#"> Borrow </a>
+                </td>
             </tr>
         {% endfor %}
     </tbody>

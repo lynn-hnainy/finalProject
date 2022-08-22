@@ -43,6 +43,8 @@
     {% for field1 in member_form %}
       {{field1.errors}}
     {% endfor %}
+    {{ user_form.first_name }}
+    {{ user_form.last_name }}
     {{ user_form.username }}
     {{ user_form.email }}
     {{ user_form.password1 }}

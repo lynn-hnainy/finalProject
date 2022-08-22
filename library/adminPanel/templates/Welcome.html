@@ -1,0 +1,17 @@
+{% extends 'baseAdmin.html' %}
+{% block content %}
+  {% if user.is_superuser %}
+  {% if messages %}
+  {% for message in messages %}
+    {{message}}
+  {% endfor %}
+  {% endif %}
+  <form class="form-inline m-2" method="post" action="{% url 'search_user' %}">
+      {% csrf_token %}
+      <input class="form-control mr-sm-2" type="search" name="searched" placeholder="Search books" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  {% else %}
+  <h1>Access Denied</h1>
+  {% endif %}
+{% endblock %}

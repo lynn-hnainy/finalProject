@@ -51,8 +51,8 @@ def renew_borrowing(request,book_id,user_id):
 @login_required(login_url='login')
 def reserve_book(request,book_id,user_id):
     book=Book.objects.get(pk=book_id)
-    member=User.objects.get(id=user_id)
-    reserve=Reservation.objects.filter(book=book).filter(user=member)
+    member=User.objects.get(pk=user_id)
+    reserve=Reservation.objects.filter(user=member,book=book)
     if reserve:
         messages.error(request, 'Book already reserved')
         return redirect('home')
@@ -60,3 +60,16 @@ def reserve_book(request,book_id,user_id):
         reserve=Reservation.objects.create(book=book,user=member)
         messages.success(request, 'Book reserved successfully')
         return render(request,"reserved_successfully.html",{'cats':cats})
+
+@login_required(login_url='login')
+def cancel_reservation(request,book_id,user_id):
+    user=User.objects.get(pk=user_id)
+    book=Book.objects.get(pk=book_id)
+    res=Reservation.objects.get(book=book,user=user)
+    res.delete()
+    all_res=Reservation.objects.filter(user=user)
+    if all_res:
+        return render(request,'reserved.html',{'books':all_res,'cats':cats})
+    else:
+        messages.warning(request,"No reserved books")
+        return render(request,'reserved.html',{'cats':cats})

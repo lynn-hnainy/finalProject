@@ -13,7 +13,7 @@ def signin(request):
         if user is not None:
             login(request, user)
             if request.user.is_superuser:
-                return redirect('register')
+                return redirect('admin_welcome')
             else:
                 return redirect('home')
         else:

@@ -35,6 +35,7 @@ class Reservation(models.Model):
     book=models.ForeignKey(Book,on_delete=models.CASCADE)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     reservation_date= models.DateField(default=datetime.datetime.now())
+    is_ready=models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username
