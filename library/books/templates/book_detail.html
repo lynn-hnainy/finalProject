@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+    <img class="card-img-top" src="../{{book.book_img}}" alt="{{book.book_title}}" width="100%" height="100%">
     <h1>{{book.book_title}}</h1>
     <p>{{book.author_name}}</p>
     <p>{{book.description}}</p>
