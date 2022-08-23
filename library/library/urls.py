@@ -23,7 +23,7 @@ from adminPanel import views as admin_view
 from books import views as book_views
 from booksTransaction import views as booksTrans_view
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls,name='admin'),
     path('register/', member_views.register, name='register'),
     path('', member_views.signin, name='login'),
     path('logout_member',member_views.logout_member,name="logout_member"),

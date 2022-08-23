@@ -1,17 +1,63 @@
-{% extends 'baseAdmin.html' %}
-{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Search Box Design</title>
+	<link rel="stylesheet" href="{% static 'style.css'%}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
   {% if user.is_superuser %}
-  {% if messages %}
-  {% for message in messages %}
-    {{message}}
-  {% endfor %}
-  {% endif %}
-  <form class="form-inline m-2" method="post" action="{% url 'search_user' %}">
-      {% csrf_token %}
-      <input class="form-control mr-sm-2" type="search" name="searched" placeholder="Search books" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  {% else %}
-  <h1>Access Denied</h1>
-  {% endif %}
-{% endblock %}
+	<nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong">
+  <!-- Container wrapper -->
+  <div class="container justify-content-between">
+    <!-- Navbar brand -->
+    <a class="navbar-brand me-2" href="{% url 'admin_welcome' %}">
+      <img src="{% static 'logo.png'%}" width="80px" height="80px">
+    </a>
+
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarButtonsExample"
+      aria-controls="navbarButtonsExample"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarButtonsExample">
+
+      <div class="d-flex">
+        <a href="http://127.0.0.1:8000/admin/" class="btn btn-info btn-sm  mx-5" role="button" aria-pressed="true">Go to admin panel</a>
+        <a href="{% url 'logout_member' %}" class="btn btn-danger btn-sm " role="button" aria-pressed="true">Logout</a>
+      </div>
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+  <!-- Navbar -->
+
+
+<div class="wrapper">
+  <form action="{% url 'search_user' %}" method="post">
+    {% csrf_token %}
+	  <input type="text" class="input" name='searched' placeholder="Enter username to search users">
+  </form>
+	<div class="searchbtn"><i class="fas fa-search"></i></div>
+</div>
+{% else %}
+<h1 style="color: white;">Access Denied</h1>
+<a href="{% url 'login' %}" class="btn btn btn-outline-danger btn-lg active" role="button" aria-pressed="true">Go back to Login page</a>
+{% endif %}
+</body>
+</html>
