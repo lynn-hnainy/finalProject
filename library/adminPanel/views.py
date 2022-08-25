@@ -16,11 +16,15 @@ def welcome(request):
 def search_user(request):
     if(request.method=="POST"):
         searched=request.POST['searched']
-        user=User.objects.filter(username__contains=searched)
-        if user:
-            return render(request,'result.html',{'users':user})
+        if searched != "":
+            user=User.objects.filter(username__contains=searched)
+            if user:
+                return render(request,'result.html',{'users':user})
+            else:
+                messages.error(request, 'User not found')
+                return render(request,'welcome.html')
         else:
-            messages.error(request, 'User not found')
+            messages.error(request, 'Please enter username')
             return render(request,'welcome.html')
     else:
         return render(request,'Welcome.html')

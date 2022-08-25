@@ -12,6 +12,13 @@
 <body>
   {% if user.is_superuser %}
   {% include 'navbarAdmin.html' %}
+  {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-danger m-5 text-center" role="alert">
+            {{message}}
+          </div>
+        {% endfor %}
+    {% endif %}
 <div class="wrapper">
   <form action="{% url 'search_user' %}" method="post" class="example">
     {% csrf_token %}
