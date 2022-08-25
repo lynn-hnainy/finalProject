@@ -37,11 +37,21 @@
                     <h2>Register</h2>
   <form method="POST">
     {% csrf_token %}
-    {% for field in user_form %}
-      {{field.errors}}
-    {% endfor %}
+    
+      {% for field in user_form %}
+        {% if field.errors %}
+          <div class="alert alert-danger" role="alert">
+            {{field.errors}}
+          </div>
+        {% endif %}
+      {% endfor %}
+      
     {% for field1 in member_form %}
-      {{field1.errors}}
+      {% if field1.errors %}
+      <div class="alert alert-danger" role="alert">
+        {{field1.errors}}
+      </div>
+      {% endif %}
     {% endfor %}
     {{ user_form.first_name }}
     {{ user_form.last_name }}
@@ -52,7 +62,7 @@
     {{ member_form.phone }}
     {{ member_form.birthdaydate }}
     {{ member_form.address }}
-    {{ field.errors.as_ul }}
+    
     <div class="form-row">
       <div class="col-lg-6">
          <button type="submit" class="btn1  mt-3 mb-5">Register</button>

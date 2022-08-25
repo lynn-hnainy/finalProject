@@ -40,18 +40,17 @@ form{
     font-weight: bold;
 }
 
-.searchbtn {
-    background: #ffec00;
-    width: 10%;
-    border-radius: 5px;
-    position: relative;
+button {
+    font-weight: 400;
+    color: #ffffff;
     cursor: pointer;
-}
-
-.searchbtn .fas{
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 18px;
-}
+    text-align: center;
+    user-select: none;
+    border: 1px solid transparent;  
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0 .3rem .3rem 0;
+    background-color: #007bff;
+    outline: 0;
+  }
