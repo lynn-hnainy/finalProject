@@ -20,7 +20,7 @@ def signin(request):
            messages.warning(request,"Log in failed")
            return redirect("login")
     else:
-         return render(request,'members/login.html')
+         return render(request,'login.html')
 
 def logout_member(request):
     logout(request)
@@ -42,4 +42,4 @@ def register(request):
     else:
         user_form = UserForm()
         member_form = MemberForm()
-    return render(request,'members/register.html', {'user_form': user_form,'member_form': member_form})
+    return render(request,'register.html', {'user_form': user_form,'member_form': member_form})
