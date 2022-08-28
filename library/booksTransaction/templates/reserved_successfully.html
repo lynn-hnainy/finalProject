@@ -3,5 +3,12 @@
     <title>Reserved Successfullu</title>
 {% endblock %}
 {% block content %}
-<h1>Reserved</h1>
+<div width="100%">
+    <p style="float: left;">
+        <a href="{% url 'home' %}"> Go back home</a>  
+    </p>
+    <p style="float:right;">
+        <a href="{% url 'reserved_books' user.id %}"> See reserved books</a>
+    </p>
+</div>
 {% endblock %}

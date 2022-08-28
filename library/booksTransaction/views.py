@@ -53,13 +53,18 @@ def reserve_book(request,book_id,user_id):
     book=Book.objects.get(pk=book_id)
     member=User.objects.get(pk=user_id)
     reserve=Reservation.objects.filter(user=member,book=book)
+    b_book=Borrowing.objects.filter(user=member,book=book)
     if reserve:
         messages.error(request, 'Book already reserved')
         return redirect('home')
     else:
-        reserve=Reservation.objects.create(book=book,user=member)
-        messages.success(request, 'Book reserved successfully')
-        return render(request,"reserved_successfully.html",{'cats':cats})
+        if b_book:
+            messages.error(request, 'Book already borrowed')
+            return redirect('home')
+        else:
+            reserve=Reservation.objects.create(book=book,user=member)
+            messages.success(request, 'Book reserved successfully')
+            return render(request,"reserved_successfully.html",{'cats':cats})
 
 @login_required(login_url='login')
 def cancel_reservation(request,book_id,user_id):
