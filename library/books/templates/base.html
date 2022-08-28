@@ -29,10 +29,10 @@
           {% block content %} <!--block of name content-->
           {% endblock %}
         </div>
-        <footer class="fixed-bottom fixed-bottombg-light text-center text-lg-start">
+        <footer class="bg-light text-center text-lg-start mt-5">
           <!-- Copyright -->
           <div class="text-center p-3" style="background-color: #f1f1f1;">
-            © 2020 Copyright:Saida Public library
+            © <script>document.write(/\d{4}/.exec(Date())[0])</script>: <a href="{% url 'home' %}">Saida Public Library</a>
           </div>
           <!-- Copyright -->
         </footer>
