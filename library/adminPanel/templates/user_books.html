@@ -32,6 +32,9 @@
                 </h6>
 
             </div>
+            {% if book.fines > 0 %}
+            <div class="alert alert-danger" role="alert">Fines:{{book.fines}}L.L</div>
+            {% endif %}
             <a href="{% url 'return_book' book.book.id book.user.id %}" class="btn btn-primary m-2">Returned</a>
     </div>
         {% endfor %}

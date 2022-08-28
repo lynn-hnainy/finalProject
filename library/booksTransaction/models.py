@@ -29,7 +29,7 @@ class Borrowing(models.Model):
 
     @property
     def fines(self):
-        return ((datetime.date.today()-self.return_date).days)*5
+        return ((datetime.date.today()-self.return_date).days)*5*1000
 
 class Reservation(models.Model):
     book=models.ForeignKey(Book,on_delete=models.CASCADE)
