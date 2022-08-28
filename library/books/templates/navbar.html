@@ -14,9 +14,6 @@
       <li class="nav-item">
         <a class="nav-link" href="{% url 'reserved_books' user.id %}">Reserved Books</a>
       </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li> -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Categories
@@ -32,10 +29,6 @@
         <a class="nav-link" href="{% url 'logout_member' %}">Logout</a>
       </li>
       {% endif %}
-
-      <!-- <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li> -->
     </ul>
     <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'search_books' %}">
       {% csrf_token %}

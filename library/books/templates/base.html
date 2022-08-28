@@ -1,12 +1,10 @@
 {% load static %}
-{% include 'navbar.html' %}
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="{% static 'aseets/logo.png' %}">
     {% block head %}
     {% endblock %}
     <!-- Bootstrap CSS -->
@@ -15,6 +13,7 @@
     <title>library system</title>
   </head>
   <body>
+    {% include 'navbar.html' %}
         <!--Add content dynamically-->
         <div class="container m-5">
           {% if messages %}

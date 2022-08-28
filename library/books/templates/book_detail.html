@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block head %}
+  <link rel="icon" type="image/x-icon" href="{% static 'assets/logo.png' %}">
   <title>{{title}}</title>
 {% endblock %}
 {% block content %}

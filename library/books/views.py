@@ -42,7 +42,7 @@ def search_books(request):
 @login_required(login_url='login')
 def book_detail(request,book_id):
     book=Book.objects.get(pk=book_id)
-    return render(request,'book_detail.html',{'book':book,'cats':cats,'title':book.title})
+    return render(request,'book_detail.html',{'book':book,'cats':cats,'title':book.book_title})
 
 @login_required(login_url='login')
 def books_author(request,author_name):
